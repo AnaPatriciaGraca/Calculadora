@@ -45,7 +45,6 @@ namespace Calculadora.Controllers
         [HttpPost]
         public IActionResult Index(string bt, string visor, string operador, string primeiroOperando, bool limpaVisor)
         {
-            primeiroOperando = "";
             switch (bt)
             {
                 case "1":
@@ -87,7 +86,7 @@ namespace Calculadora.Controllers
                     //processar as operações aritméticas
                     if (!string.IsNullOrEmpty(operador)) { 
                         double operando1 = Convert.ToDouble(primeiroOperando);
-                        double operando2 = Convert.ToDouble(primeiroOperando);
+                        double operando2 = Convert.ToDouble(visor);
                         switch (operador)
                         {
                             case "+":
@@ -133,7 +132,7 @@ namespace Calculadora.Controllers
             //enviar dados para a View
             ViewBag.Visor = visor;
             ViewBag.Operador = operador;
-            ViewBag.PrimeiroOperador = primeiroOperando;
+            ViewBag.PrimeiroOperando = primeiroOperando;
             ViewBag.LimpaVisor = limpaVisor + "";
             return View();
         }
